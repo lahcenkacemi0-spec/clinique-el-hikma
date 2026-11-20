@@ -20,7 +20,7 @@ body { margin: 0; background: #f8fbfb; font-family: var(--font-inter), Arial, sa
 .eyebrow { color: #139e9a; font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
 
 .announcement-bar { overflow: hidden; }
-.announcement-track { display: flex; width: max-content; animation: announcement-scroll 22s linear infinite; }
+.announcement-track { display: flex; width: max-content; animation: announcement-scroll 12s linear infinite; will-change: transform; }
 .announcement-message { flex: none; padding-inline: 2rem; white-space: nowrap; }
 @keyframes announcement-scroll { to { transform: translateX(-50%); } }
 
