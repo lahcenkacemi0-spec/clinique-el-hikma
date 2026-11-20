@@ -73,8 +73,7 @@ body { margin: 0; background: #f8fbfb; font-family: var(--font-inter), Arial, sa
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .clinic-header-logo, .clinic-logo-symbol, .clinic-logo-wordmark, .header-language, .header-menu-button, .announcement-track { animation: none !important; }
-  .announcement-track { width: 100%; justify-content: center; }
-  .announcement-message + .announcement-message { display: none; }
+  .clinic-header-logo, .clinic-logo-symbol, .clinic-logo-wordmark, .header-language, .header-menu-button { animation: none !important; }
+  .announcement-track { animation-duration: 30s; }
   .header-control, .header-navigation { transition: none !important; }
 }
