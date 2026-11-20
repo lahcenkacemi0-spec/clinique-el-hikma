@@ -15,6 +15,8 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #f8fbfb; font-family: var(--font-inter), Arial, sans-serif; }
 .font-serif { font-family: var(--font-playfair), Georgia, serif; }
+[dir='rtl'] { font-family: var(--font-arabic), Arial, sans-serif; }
+[dir='rtl'] .font-serif { font-family: var(--font-arabic), Arial, sans-serif; }
 .eyebrow { color: #139e9a; font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
 
 [data-reveal-ready='true'] [data-reveal] {
@@ -26,13 +28,24 @@ body { margin: 0; background: #f8fbfb; font-family: var(--font-inter), Arial, sa
 }
 
 [data-reveal-ready='true'] img[data-reveal] {
+  clip-path: inset(4% 0 0 round 2px);
   transform: translate3d(0, 30px, 0) scale(.97);
+  transition: opacity 850ms cubic-bezier(.22, 1, .36, 1), transform 850ms cubic-bezier(.22, 1, .36, 1), clip-path 850ms cubic-bezier(.22, 1, .36, 1);
+}
+
+@media (max-width: 639px) {
+  [data-reveal-ready='true'] [data-reveal] { transition-duration: 650ms; }
+  [data-reveal-ready='true'] img[data-reveal] { transition-duration: 700ms; }
 }
 
 [data-reveal-ready='true'] [data-reveal][data-revealed='true'] {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   will-change: auto;
+}
+
+[data-reveal-ready='true'] img[data-reveal][data-revealed='true'] {
+  clip-path: inset(0 round 2px);
 }
 
 @media (prefers-reduced-motion: reduce) {
