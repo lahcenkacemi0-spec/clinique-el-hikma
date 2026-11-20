@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { ArrowUpRight, Clock3, Globe2, Menu, Phone, ShieldCheck, Stethoscope, X } from 'lucide-react'
 
@@ -21,6 +21,42 @@ const services = [
 export default function ClinicHome() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [arabic, setArabic] = useState(false)
+
+  useEffect(() => {
+    const root = document.querySelector('main')
+    if (!root) return
+
+    const targets = root.querySelectorAll<HTMLElement>(
+      'main > section:not(#accueil), section h1, section h2, section h3, section .eyebrow, section p, section article, section img'
+    )
+    const groups = new Map<Element, HTMLElement[]>()
+
+    targets.forEach((target) => {
+      target.dataset.reveal = ''
+      const parent = target.parentElement
+      if (parent) groups.set(parent, [...(groups.get(parent) ?? []), target])
+    })
+    groups.forEach((items) => items.forEach((item, index) => {
+      item.style.setProperty('--reveal-delay', `${Math.min(index * 90, 360)}ms`)
+    }))
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      targets.forEach((target) => target.dataset.revealed = 'true')
+      return
+    }
+
+    root.dataset.revealReady = 'true'
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        ;(entry.target as HTMLElement).dataset.revealed = 'true'
+        observer.unobserve(entry.target)
+      })
+    }, { threshold: 0.18 })
+
+    targets.forEach((target) => observer.observe(target))
+    return () => observer.disconnect()
+  }, [])
 
   const t = arabic
     ? { home: 'الرئيسية', services: 'خدماتنا', about: 'من نحن', contact: 'اتصل بنا', hero: 'صحتكم، أولويتنا.', intro: 'رعاية طبية متميزة في الشلف، في خدمتكم على مدار الساعة.', cta: 'احجز موعداً', explore: 'اكتشف خدماتنا' }
