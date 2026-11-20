@@ -79,20 +79,20 @@ export default function ClinicHome() {
       <div className="bg-[#073b4c] px-6 py-2 text-center text-[11px] font-medium tracking-[0.15em] text-white/80">{t.topLine}</div>
       <header className="absolute left-0 right-0 top-8 z-20 border-b border-white/15 bg-[#073b4c]/15 px-4 py-3.5 text-white backdrop-blur-sm sm:px-6 sm:py-5 md:px-12">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <a href="#accueil" className="flex items-center gap-3">
-            <Image src={images.logo} alt={arabic ? 'شعار عيادة الحكمة' : 'Logo Clinique El Hikma'} width={48} height={48} className="size-11 rounded-full object-cover" />
-            <span className="hidden text-sm font-bold leading-tight tracking-[0.08em] sm:block">CLINIQUE<br /><span className="font-normal text-white/70">EL HIKMA</span></span>
+          <a href="#accueil" className="clinic-header-logo flex items-center gap-3">
+            <Image src={images.logo} alt={arabic ? 'شعار عيادة الحكمة' : 'Logo Clinique El Hikma'} width={48} height={48} className="clinic-logo-symbol size-11 rounded-full object-cover" />
+            <span className="clinic-logo-wordmark hidden text-sm font-bold leading-tight tracking-[0.08em] sm:block">CLINIQUE<br /><span className="font-normal text-white/70">EL HIKMA</span></span>
           </a>
           <nav className="hidden items-center gap-9 text-sm font-medium lg:flex">
             <a href="#accueil" className="text-[#73ded7]">{t.home}</a><a href="#services" className="transition hover:text-[#73ded7]">{t.services}</a><a href="#clinique" className="transition hover:text-[#73ded7]">{t.about}</a><a href="#contact" className="transition hover:text-[#73ded7]">{t.contact}</a>
           </nav>
           <div className="flex items-center gap-3">
-            <button onClick={() => setArabic(!arabic)} className="min-h-11 min-w-11 rounded-full border border-white/30 px-3 py-1.5 text-xs font-semibold hover:bg-white/10" aria-label={arabic ? 'تغيير اللغة' : 'Changer de langue'}>{arabic ? 'FR' : 'عربي'}</button>
+            <button onClick={() => setArabic(!arabic)} className="header-control header-language min-h-11 min-w-11 rounded-full border border-white/30 px-3 py-1.5 text-xs font-semibold hover:bg-white/10" aria-label={arabic ? 'تغيير اللغة' : 'Changer de langue'}>{arabic ? 'FR' : 'عربي'}</button>
             <a href="tel:020643535" className="hidden min-h-11 items-center gap-2 rounded-full bg-[#65d7d0] px-4 py-2.5 text-xs font-bold text-[#073b4c] lg:flex"><Phone className="size-3.5" /> 020 64 35 35</a>
-            <button className="flex size-11 items-center justify-center rounded-full transition hover:bg-white/10 lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={arabic ? (menuOpen ? 'إغلاق القائمة' : 'فتح القائمة') : (menuOpen ? 'Fermer le menu' : 'Ouvrir le menu')} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
+            <button className="header-control header-menu-button flex size-11 items-center justify-center rounded-full transition hover:bg-white/10 lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={arabic ? (menuOpen ? 'إغلاق القائمة' : 'فتح القائمة') : (menuOpen ? 'Fermer le menu' : 'Ouvrir le menu')} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
           </div>
         </div>
-        {menuOpen && <nav aria-label={arabic ? 'التنقل الرئيسي' : 'Navigation principale'} className="mt-3 flex flex-col gap-1 rounded-xl border border-white/10 bg-[#073b4c] p-3 text-sm shadow-2xl lg:hidden"><a onClick={() => setMenuOpen(false)} href="#accueil" className="rounded-lg px-4 py-3.5 transition hover:bg-white/10">{t.home}</a><a onClick={() => setMenuOpen(false)} href="#services" className="rounded-lg px-4 py-3.5 transition hover:bg-white/10">{t.services}</a><a onClick={() => setMenuOpen(false)} href="#clinique" className="rounded-lg px-4 py-3.5 transition hover:bg-white/10">{t.about}</a><a onClick={() => setMenuOpen(false)} href="#contact" className="rounded-lg px-4 py-3.5 transition hover:bg-white/10">{t.contact}</a></nav>}
+        <nav aria-label={arabic ? 'التنقل الرئيسي' : 'Navigation principale'} aria-hidden={!menuOpen} inert={!menuOpen} data-menu-open={menuOpen} className="header-navigation flex flex-col gap-1 rounded-xl border border-white/10 bg-[#073b4c] p-3 text-sm shadow-2xl lg:hidden"><a onClick={() => setMenuOpen(false)} href="#accueil" className="rounded-lg px-4 py-3.5 transition hover:bg-white/10">{t.home}</a><a onClick={() => setMenuOpen(false)} href="#services" className="rounded-lg px-4 py-3.5 transition hover:bg-white/10">{t.services}</a><a onClick={() => setMenuOpen(false)} href="#clinique" className="rounded-lg px-4 py-3.5 transition hover:bg-white/10">{t.about}</a><a onClick={() => setMenuOpen(false)} href="#contact" className="rounded-lg px-4 py-3.5 transition hover:bg-white/10">{t.contact}</a></nav>
       </header>
 
       <section id="accueil" className="relative flex min-h-[610px] items-end overflow-hidden bg-[#073b4c] px-5 pb-11 pt-32 text-white sm:min-h-[680px] sm:px-6 sm:pb-16 sm:pt-44 md:min-h-[760px] md:px-12 md:pb-24">
