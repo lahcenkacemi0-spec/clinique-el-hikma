@@ -83,7 +83,7 @@ export default function ClinicHome() {
       }
 
   return (
-    <main lang={arabic ? 'ar' : 'fr'} dir={arabic ? 'rtl' : 'ltr'} className="min-h-screen bg-[#f8fbfb] text-[#123c4b]">
+    <main lang={arabic ? 'ar' : 'fr'} dir={arabic ? 'rtl' : 'ltr'} className="min-h-screen bg-[#eef4f1] text-[#123c4b]">
       <div className="announcement-bar bg-[#073b4c] py-2 text-[11px] font-medium tracking-[0.15em] text-white/80" aria-label={t.topLine}><div className="announcement-track"><span className="announcement-message">{t.topLine}</span><span className="announcement-message" aria-hidden="true">{t.topLine}</span></div></div>
       <header className="absolute left-0 right-0 top-8 z-20 border-b border-white/15 bg-[#073b4c]/15 px-4 py-3.5 text-white backdrop-blur-sm sm:px-6 sm:py-5 md:px-12">
         <div className="mx-auto flex max-w-7xl items-center justify-between">

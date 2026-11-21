@@ -13,7 +13,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: #f8fbfb; font-family: var(--font-inter), Arial, sans-serif; }
+body { margin: 0; background: #eef4f1; font-family: var(--font-inter), Arial, sans-serif; }
 @media (max-width: 1023px) {
   html.mobile-menu-open, html.mobile-menu-open body { overflow: hidden; overscroll-behavior: none; }
 }
